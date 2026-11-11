@@ -1,1 +1,173 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HÚSAR ROCK - Emoción y Recuerdos 24/7</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #09090b;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+        /* Etiqueta EN VIVO en la esquina superior izquierda */
+        .badge-live {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #dc2626;
+            color: #ffffff;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-radius: 15px;
+        }
+        /* Clásicos de los 60s-90s en la esquina superior derecha */
+        .corner-decades {
+            position: absolute;
+            top: 18px;
+            right: 15px;
+            color: #f59e0b;
+            font-size: 0.85rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-align: right;
+        }
+        /* Emblema Circular estilo Vinilo (CSS puro, ultra liviano) */
+        .vinyl-emblem {
+            width: 230px;
+            height: 230px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #2a1210 25%, #121215 26%, #1c1c21 45%, #121215 46%, #1c1c21 68%, #09090b 69%);
+            border: 4px solid #d97706;
+            box-shadow: 0 0 25px rgba(217, 119, 6, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 35px;
+            margin-bottom: 18px;
+            padding: 15px;
+            text-align: center;
+        }
+        .guitar-icon {
+            font-size: 3rem;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+        .channel-title {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: #fbbf24;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            text-shadow: 1px 1px 4px #000000;
+        }
+        /* Lema en una sola frase limpia */
+        .slogan-line {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #f4f4f6;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+            text-align: center;
+        }
+        /* Botonera de emisoras */
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            max-width: 650px;
+        }
+        button {
+            background-color: #18181b;
+            color: #e4e4e7;
+            border: 2px solid #3f3f46;
+            padding: 10px 15px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button.active {
+            background-color: #d97706;
+            color: #000000;
+            border-color: #fbbf24;
+        }
+        .status {
+            font-size: 0.9rem;
+            color: #a1a1aa;
+            margin-bottom: 10px;
+        }
+        .status span {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        audio {
+            width: 100%;
+            max-width: 500px;
+            height: 48px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="badge-live">● EN VIVO 24/7</div>
+    <div class="corner-decades">CLÁSICOS DE LOS<br>60s • 70s • 80s • 90s</div>
+
+    <!-- Emblema central -->
+    <div class="vinyl-emblem">
+        <div class="guitar-icon">🎸🎵</div>
+        <div class="channel-title">HÚSAR<br>ROCK</div>
+    </div>
+
+    <!-- Frase fuerza en una sola línea -->
+    <div class="slogan-line">EMOCIÓN Y RECUERDOS</div>
+
+    <!-- Selector de emisoras -->
+    <div class="buttons">
+        <button class="active" onclick="playRadio(this, 'https://radioparadise.com', 'Rock Clásico Mix')">1. Rock Clásico</button>
+        <button onclick="playRadio(this, 'https://181fm.com', 'VClassic Rock')">2. VClassic Rock</button>
+        <button onclick="playRadio(this, 'https://181fm.com', 'Rock 80s')">3. Rock 80s</button>
+        <button onclick="playRadio(this, 'https://181fm.com', 'Rock 90s')">4. Rock 90s</button>
+    </div>
+
+    <div class="status">Sintonizando: <span id="station-name">Rock Clásico Mix</span></div>
+
+    <audio id="player" controls preload="none">
+        <source src="https://radioparadise.com" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function playRadio(btn, url, name) {
+            var btns = document.getElementsByTagName('button');
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].className = '';
+            }
+            btn.className = 'active';
+            document.getElementById('station-name').textContent = name;
+            var audio = document.getElementById('player');
+            audio.src = url;
+            audio.play();
+        }
+    </script>
+
+</body>
+</html>
