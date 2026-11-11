@@ -1,1 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HÚSAR ROCK - TV y Radio 24/7</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #09090b;
+            color: #ffffff;
+            font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 15px;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto 10px auto;
+        }
+        .live-badge {
+            background-color: #dc2626;
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+        }
+        .corner-era {
+            text-align: right;
+            color: #fbbf24;
+            font-size: 0.82rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-right: 3px solid #d97706;
+            padding-right: 10px;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+        .brand-box {
+            margin-bottom: 15px;
+        }
+        h1 {
+            font-size: 2.3rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+        h1 span {
+            color: #f59e0b;
+        }
+        .slogan-line {
+            font-size: 0.95rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #e4e4e7;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+        .main-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .tab-btn {
+            background-color: #18181b;
+            color: #a1a1aa;
+            border: 2px solid #27272a;
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            flex: 1;
+            max-width: 260px;
+        }
+        .tab-btn.active {
+            background-color: #dc2626;
+            color: #ffffff;
+            border-color: #fca5a5;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .screen-frame {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background-color: #000000;
+            border: 3px solid #d97706;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        .screen-frame iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .channels {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .ch-btn {
+            background-color: #18181b;
+            color: #ffffff;
+            border: 2px solid #3f3f46;
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            flex: 1 1 150px;
+        }
+        .ch-btn.active {
+            background-color: #d97706;
+            color: #000000;
+            border-color: #fef08a;
+        }
+        .radio-box {
+            background-color: #141417;
+            border: 3px solid #d97706;
+            border-radius: 10px;
+            padding: 25px 20px;
+            margin-bottom: 15px;
+        }
+        .radio-title {
+            color: #fbbf24;
+            font-size: 1.15rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        audio {
+            width: 100%;
+            max-width: 550px;
+            height: 50px;
+            margin-top: 10px;
+        }
+        .status {
+            font-size: 0.88rem;
+            color: #a1a1aa;
+            margin-top: 8px;
+        }
+        .status strong {
+            color: #fbbf24;
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 1.75rem; }
+            .slogan-line { font-size: 0.75rem; letter-spacing: 2px; }
+            .tab-btn { padding: 10px 12px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="live-badge">● EN VIVO 24/7</div>
+        <div class="corner-era">CLÁSICOS DE LOS<br>60s • 70s • 80s • 90s</div>
+    </div>
+
+    <div class="main-container">
+        <div class="brand-box">
+            <h1>HÚSAR <span>ROCK</span></h1>
+            <div class="slogan-line">EMOCIÓN Y RECUERDOS</div>
+        </div>
+
+        <div class="main-tabs">
+            <button class="tab-btn active" onclick="switchTab(this, 'tv-section')">📺 TV VIDEOS MUSICALES</button>
+            <button class="tab-btn" onclick="switchTab(this, 'radio-section')">📻 RADIO ROCK INGLÉS</button>
+        </div>
+
+        <div id="tv-section" class="tab-content active">
+            <div class="screen-frame">
+                <iframe id="tv-player"
+                    src="https://youtube.com"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="channels">
+                <button class="ch-btn active" onclick="setVideoChannel(this, 'https://youtube.com', 'CH 1: Éxitos Clásicos Mix')">
+                    CH 1: Clásicos Mix
+                </button>
+                <button class="ch-btn" onclick="setVideoChannel(this, 'https://youtube.com', 'CH 2: Rock de los 80s')">
+                    CH 2: Rock 80s
+                </button>
+                <button class="ch-btn" onclick="setVideoChannel(this, 'https://youtube.com', 'CH 3: Rock & Grunge 90s')">
+                    CH 3: Rock 90s
+                </button>
+                <button class="ch-btn" onclick="setVideoChannel(this, 'https://youtube.com', 'CH 4: Rock en Español 80s-90s')">
+                    CH 4: Rock Español
+                </button>
+            </div>
+
+            <div class="status">Viendo ahora: <strong id="tv-status">CH 1: Éxitos Clásicos Mix</strong></div>
+        </div>
+
+        <div id="radio-section" class="tab-content">
+            <div class="radio-box">
+                <div class="radio-title">SEÑAL DE AUDIO DIRECTA 24/7 (ROCK EN INGLÉS)</div>
+                
+                <div class="channels">
+                    <button class="ch-btn active" onclick="setRadioStation(this, 'https://radioparadise.com', 'Radio Paradise Rock Mix (60s-90s)')">
+                        1. Radio Paradise Rock
+                    </button>
+                    <button class="ch-btn" onclick="setRadioStation(this, 'https://radioparadise.com', 'Classic Hits Main Mix')">
+                        2. Classic Hits Mix
+                    </button>
+                    <button class="ch-btn" onclick="setRadioStation(this, 'https://radioparadise.com', 'Baladas y Rock Suave 70s-80s')">
+                        3. Baladas Rock
+                    </button>
+                </div>
+
+                <audio id="radio-player" controls preload="none">
+                    <source src="https://radioparadise.com" type="audio/mpeg">
+                    Tu navegador no soporta audio directo.
+                </audio>
+
+                <div class="status">Sintonizando: <strong id="radio-status">Radio Paradise Rock Mix (60s-90s)</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <div></div>
+
+    <script>
+        function switchTab(tabBtn, sectionId) {
+            var tabs = document.getElementsByClassName('tab-btn');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            tabBtn.classList.add('active');
+
+            var contents = document.getElementsByClassName('tab-content');
+            for (var j = 0; j < contents.length; j++) {
+                contents[j].classList.remove('active');
+            }
+            document.getElementById(sectionId).classList.add('active');
+
+            if (sectionId === 'tv-section') {
+                document.getElementById('radio-player').pause();
+            }
+        }
+
+        function setVideoChannel(btn, embedUrl, title) {
+            var parent = document.getElementById('tv-section');
+            var btns = parent.getElementsByClassName('ch-btn');
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].classList.remove('active');
+            }
+            btn.classList.add('active');
+            document.getElementById('tv-status').textContent = title;
+            document.getElementById('tv-player').src = embedUrl;
+        }
+
+        function setRadioStation(btn, streamUrl, title) {
+            var parent = document.getElementById('radio-section');
 
